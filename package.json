@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxi dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18",
+    "@types/tinycolor2": "^1.4.3",
+    "nuxt": "^3.6.1"
+  },
+  "dependencies": {
+    "moment": "^2.29.4",
+    "tinycolor2": "^1.6.0"
+  }
+}
