@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 设置的类型定义
 interface Props {
-  widgetConfig?: {
+  widgetConfig: {
     [index: string]: any;
   };
 }
@@ -10,7 +10,7 @@ const props = defineProps<Props>();
 </script>
 <template>
   <div class="content">
-    <div class="container">
+    <div class="container" :class="props.widgetConfig['select-theme']">
       <svg
         id="bongo-cat"
         xmlns="http://www.w3.org/2000/svg"
@@ -395,10 +395,12 @@ const props = defineProps<Props>();
   left: 0;
   right: 0;
 }
-
-#bongo-cat {
+#container #bongo-cat {
   height: 40vh;
-  width: 40vw;
+}
+#bongo-cat {
+  height: 85vh;
+  width: 90vw;
 
   bottom: 0;
   left: 0;
@@ -637,34 +639,34 @@ path#f3-l9 {
     translateY(20px) translateZ(-50px);
 }
 
-#container.dark #eyes,
-#container.dark #mouth path {
+.container.dark #eyes,
+.container.dark #mouth path {
   stroke: #ffcc81;
   fill: #ffcc81;
 }
-#container.dark #head__outline path:first-child,
-#container.dark :is(#paw-left--up, #paw-right--up) g path:first-child,
-#container.dark :is(#paw-left--down, #paw-right--down) path:first-child {
+.container.dark #head__outline path:first-child,
+.container.dark :is(#paw-left--up, #paw-right--up) g path:first-child,
+.container.dark :is(#paw-left--down, #paw-right--down) path:first-child {
   fill: #45465e;
 }
-#container.dark #laptop__cover polygon,
-#container.dark #laptop__cover path {
+.container.dark #laptop__cover polygon,
+.container.dark #laptop__cover path {
   fill: #4f4f51e1;
   stroke: #0f0f10;
 }
-#container.dark #laptop__terminal {
+.container.dark #laptop__terminal {
   stroke: #569cfa;
   fill: none;
 }
-#container.dark #table path:first-child {
+.container.dark #table path:first-child {
   fill: #45465e88;
   stroke: #45465e;
 }
-#container.dark #laptop__base polygon {
+.container.dark #laptop__base polygon {
   fill: #4f4f5188;
   stroke: #01070f;
 }
-#container.dark #laptop__keyboard {
+.container.dark #laptop__keyboard {
   stroke: #569cfa;
   fill: #569cfa;
 }
