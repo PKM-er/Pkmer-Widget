@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
-    <div>
-        <SimpleClock></SimpleClock>
-    </div>
+  <div>
+    <SimpleClock :widgetConfig="initWidgetConfig"></SimpleClock>
+  </div>
 </template>
