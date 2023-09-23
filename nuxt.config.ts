@@ -5,7 +5,7 @@ export default defineNuxtConfig({
             title: 'Pkmer-widget',
             meta: [
                 { name: 'description', content: 'Pkmer挂件集市.' },
-                { 'http-equiv': 'cache-control', content: 'max-age=180.' }
+                { 'http-equiv': 'cache-control', content: 'max-age=180' }
             ],
         }
     },
