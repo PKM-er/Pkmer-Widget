@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-13 18:10:06
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-03-15 21:13:24
+ * @LastEditTime: 2023-11-02 17:23:19
  * @Description: 
 -->
 <script setup lang="ts">
@@ -238,7 +238,7 @@ ul {
 #list li {
 	width: 2px;
 	height: 8px;
-	background-color: #333333;
+	background-color: #747474;
 	position: absolute;
 	left: 99px;
 	top: 0;
@@ -250,7 +250,7 @@ ul {
 .dot {
 	width: 6px;
 	height: 6px;
-	background-color: #333333;
+	background-color: #747474;
 	border-radius: 50%;
 	position: absolute;
 	left: 97px;
@@ -266,34 +266,29 @@ ul {
 .hour-hand {
 	height: 30px;
 	top: 70px;
-	background-color: #333333;
+	background-color: #747474;
 }
 .min-hand {
 	height: 45px;
 	top: 55px;
-	background-color: #333333;
+	background-color: #747474;
 }
 .sec-hand {
 	width: 2px;
 	height: 65px;
 	left: 99px;
 	top: 35px;
-	background-color: #333333;
+	background-color: #747474;
 }
 #nub li {
 	position: absolute;
 	left: 96px;
 	top: 16px;
 	transform-origin: center 84px;
+	color: #747474;
 }
 #nub li span {
 	display: block;
 	transform-origin: center center;
-}
-
-#container.dark .hand,
-#container.dark .dot,
-#container.dark #list li {
-	background-color: #ffffff;
 }
 </style>

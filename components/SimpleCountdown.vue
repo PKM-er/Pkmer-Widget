@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-05 15:02:39
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-09-05 22:52:33
+ * @LastEditTime: 2023-11-02 21:48:24
  * @FilePath: \pkmer-docs\src\components\Widget\SimpleCountdown\SimpleCountdown.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -53,7 +53,6 @@ const defaultdate = new Date(props.widgetConfig?.["date-picker"])
   })
   .replace("/", "-")
   .replace("/", "-");
-
 const handleClickDate = () => {
   showPicker.value = true;
   nextTick(function () {
@@ -133,8 +132,7 @@ onMounted(() => {
   const storedSelectedDate = localStorage.getItem(
     "SimpleCountdown-selectedDate"
   );
-
-  if (!isNaN(Number(storedSelectedDate)) && storedSelectedDate) {
+  if (storedSelectedDate) {
     selectedDate.value = storedSelectedDate;
   }
   timerId = setInterval(() => {
@@ -191,7 +189,6 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   font-size: 18px;
@@ -203,14 +200,20 @@ onBeforeUnmount(() => {
 }
 p {
   margin: 0;
+ 
 }
 .countdown {
+	color: #747474;
   text-align: center;
   font-family: serif;
+}
+.days {
+  color: #747474;
 }
 .countdown span {
   font-weight: bold;
   display: inline-block;
+  color: #747474;
 }
 #days {
   position: relative;
@@ -231,6 +234,8 @@ p {
   position: absolute;
   left: 100%;
   line-height: 1;
+}
+#down {
 }
 input {
   width: 70%;
