@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-05 15:02:39
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-03-15 11:08:53
+ * @LastEditTime: 2023-11-03 15:10:10
  * @FilePath: \pkmer-docs\src\components\Widget\CountdownProgressBar\CountdownProgressBar.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -34,24 +34,37 @@ watchEffect(() => {
 	if (!props.widgetConfig?.['date-range-picker']) {
 		return;
 	}
-	const start = props.widgetConfig?.['date-range-picker'][0];
-	const end = props.widgetConfig?.['date-range-picker'][1];
+
+	const dateRange = props.widgetConfig?.['date-range-picker'];
+
+	let result;
+	if (Array.isArray(dateRange)) {
+		result = dateRange;
+	} else if (typeof dateRange === 'string') {
+		result = dateRange.split(',');
+	} else {
+		result = null; // 或者其他处理方式
+	}
+	const start = result[0];
+	const end = result[1];
 
 	const themeColor = props.widgetConfig['theme-color'];
 	themeColor_B.value = themeColor;
 
 	themeColor_L.value = tinycolor(themeColor_B.value).lighten(20).toString();
 	themeColor_D.value = tinycolor(themeColor_B.value).darken(15).toString();
-	start_p.value = start;
-	end_p.value = end;
+	start_p.value = Number(start);
+	end_p.value = Number(end);
+
 	const now_year = new Date().getFullYear();
 
-	function startTime(time) {
+	function startTime(time: number) {
 		const nowTimeDate = new Date(time);
 		return nowTimeDate.setHours(0, 0, 0, 0);
 	}
-	function endTime(time) {
+	function endTime(time: number) {
 		const nowTimeDate = new Date(time);
+
 		return nowTimeDate.setHours(23, 59, 59, 999);
 	}
 	let _start = startTime(start_p.value);
@@ -76,6 +89,7 @@ watchEffect(() => {
 		percent.value = Number(((passed / total) * 100).toFixed(3)) * 0.01;
 
 		let remain = total - passed;
+
 		hours.value = Number(((remain / (60 * 60 * 1000)) % 24).toFixed(0));
 		days.value = Number((remain / (24 * 60 * 60 * 1000)).toFixed(0));
 	}
@@ -151,6 +165,7 @@ onBeforeUnmount(() => {
 	border-radius: 3vw;
 	/* border: 2px solid #333; */
 	position: relative;
+	color: #747474;
 }
 .inner::after,
 .inner::before {
@@ -175,6 +190,7 @@ onBeforeUnmount(() => {
 .label {
 	font-size: 18px;
 	margin-bottom: 2.667vw;
+	color: #747474;
 }
 .label span {
 	font-size: 30px;

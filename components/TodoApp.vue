@@ -199,7 +199,7 @@ onMounted(() => {
                 >
                   <path
                     fill="currentColor"
-                    d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+                    d="m13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29l-4.3 4.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l4.29-4.3l4.29 4.3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z"
                   />
                 </svg>
               </button>
@@ -341,8 +341,7 @@ a:hover {
 }
 .container {
   max-width: 500px;
-  margin: 16px auto;
-  padding: 0 15px;
+  margin: 0px auto;
 }
 .col {
   flex: 1 0 0%;
@@ -354,7 +353,7 @@ a:hover {
 }
 .form-control {
   border: 2px solid transparent;
-  padding: 12.8px 20px;
+  padding: 12.8px 10px;
   font-size: 16px;
 }
 .form-control:focus {
@@ -468,7 +467,6 @@ input {
   transform: translateY(1.5px);
 }
 .btn-size-lg {
-  padding: 11px 12px;
 }
 .btn-dark {
   color: #fff;
@@ -544,6 +542,7 @@ input {
 }
 .text-dark-gray {
   color: #9f9a91;
+  font-size: min(16px, 4.5vw);
 }
 .d-flex {
   display: flex;

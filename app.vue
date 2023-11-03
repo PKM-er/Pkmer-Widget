@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-09-04 16:18:06
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-11-02 22:36:16
+ * @LastEditTime: 2023-11-03 23:00:59
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -91,3 +91,8 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+<style>
+body{
+  margin: 0;
+}
+</style>

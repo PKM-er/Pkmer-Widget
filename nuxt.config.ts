@@ -1,3 +1,10 @@
+/*
+ * @Author: cumany cuman@qq.com
+ * @Date: 2023-09-06 10:58:21
+ * @LastEditors: cumany cuman@qq.com
+ * @LastEditTime: 2023-11-03 14:08:29
+ * @Description: 
+ */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     app: {
@@ -12,6 +19,7 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     build: {
         transpile: [
+            "moment",
             "moment/dist/locale/zh-cn",
             "tinycolor2"
         ]

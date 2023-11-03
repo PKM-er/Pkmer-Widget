@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-13 18:10:06
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-03-16 09:48:42
+ * @LastEditTime: 2023-11-03 21:32:07
  * @Description: 
 -->
 <!--
@@ -143,9 +143,9 @@ onBeforeUnmount(() => {
 </template>
 <style scoped>
 .progress-group {
+	color: #747474;
 	margin: 0 auto;
 	font-family: Verdana;
-	height: 100vh;
 	padding: 0;
 }
 #left {
@@ -182,7 +182,7 @@ h2 {
 	margin: 0;
 	line-height: 28px;
 	display: block;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	font-weight: bold;
