@@ -18,10 +18,29 @@ export default defineNuxtConfig({
     },
     devtools: { enabled: true },
     build: {
-        transpile: [
-            "moment",
-            "moment/dist/locale/zh-cn",
-            "tinycolor2"
-        ]
+        transpile:
+            process.env.NODE_ENV === 'production' ?
+                [
+                    "moment",
+                    "moment/dist/locale/zh-cn",
+                    "tinycolor2",
+                    "naive-ui",
+                    'vueuc',
+                    '@css-render/vue3-ssr',
+                    '@juggle/resize-observer'
+                ] : [
+                    "moment",
+                    "moment/dist/locale/zh-cn",
+                    "tinycolor2",
+                    '@juggle/resize-observer'
+                ],
+    },
+    vite: {
+        optimizeDeps: {
+            include:
+                process.env.NODE_ENV === 'development'
+                    ? ['naive-ui', 'vueuc', 'date-fns-tz/formatInTimeZone']
+                    : []
+        }
     }
 })

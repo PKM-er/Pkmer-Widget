@@ -9,9 +9,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@css-render/vue3-ssr": "^0.15.12",
     "@nuxt/devtools": "latest",
     "@types/node": "^18",
     "@types/tinycolor2": "^1.4.3",
+    "naive-ui": "^2.35.0",
     "nuxt": "^3.6.1"
   },
   "dependencies": {
