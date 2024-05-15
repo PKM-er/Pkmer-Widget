@@ -46,12 +46,20 @@ npm run build
 
 ```
 
+**生成静态**
+```bash
+# pnpm
+npm run generate
+```
+
 **预览**
 
 ```bash
 # pnpm
 pnpm run preview
 ```
+
+
 
 **部署**
 

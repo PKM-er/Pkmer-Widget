@@ -2,12 +2,12 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-13 18:10:06
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-10-27 14:39:06
+ * @LastEditTime: 2023-11-08 20:56:43
  * @Description: 
 -->
 <script setup lang="ts">
 import { ref, computed, onMounted, watchEffect } from "vue";
-import { calendar } from "@/composables/calendar";
+
 import tinycolor from "tinycolor2";
 //这个文件是实际生成iframe用到的文件，读取配置信息，完整的功能
 // 设置的类型定义
@@ -312,87 +312,12 @@ onMounted(() => {
   background: v-bind(themeStyle) no-repeat center;
   background-size: 80% 80%;
 }
-.pass.pass-2 {
-  background: url(/assets/fruit/fruit-2.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-3 {
-  background: url(/assets/fruit/fruit-3.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-4 {
-  background: url(/assets/fruit/fruit-4.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-5 {
-  background: url(/assets/fruit/fruit-5.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-6 {
-  background: url(/assets/fruit/fruit-6.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-7 {
-  background: url(/assets/fruit/fruit-7.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-8 {
-  background: url(/assets/fruit/fruit-8.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-9 {
-  background: url(/assets/fruit/fruit-9.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-10 {
-  background: url(/assets/fruit/fruit-10.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-11 {
-  background: url(/assets/fruit/fruit-11.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-12 {
-  background: url(/assets/fruit/fruit-12.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-13 {
-  background: url(/assets/fruit/fruit-13.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-14 {
-  background: url(/assets/fruit/fruit-14.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-15 {
-  background: url(/assets/fruit/fruit-15.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-16 {
-  background: url(/assets/fruit/fruit-16.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-17 {
-  background: url(/assets/fruit/fruit-17.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-18 {
-  background: url(/assets/fruit/fruit-18.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-19 {
-  background: url(/assets/fruit/fruit-19.png) no-repeat center;
-  background-size: 80% 80%;
-}
-.pass.pass-20 {
-  background: url(/assets/fruit/fruit-20.png) no-repeat center;
-  background-size: 80% 80%;
-}
+
 .active {
   background-color: v-bind(themeColor_B);
   border-radius: 50%;
   color: v-bind(themeColor_L);
-  /* background: url(./assets/flowus/pink.png); */
+  /* background: url(../assets/flowus/pink.png); */
   background-size: 100% 100%;
 }
 

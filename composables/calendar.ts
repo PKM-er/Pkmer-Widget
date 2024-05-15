@@ -828,7 +828,7 @@ export const calendar = {
 	 * @return JSON object
 	 * @eg:console.log(calendar.solar2lunar(1987,11,01));
 	 */
-	solar2lunar: function (yPara, mPara, dPara) {
+	solar2lunar: function (yPara: string, mPara: string, dPara: string) {
 		let y = parseInt(yPara);
 		let m = parseInt(mPara);
 		let d = parseInt(dPara);

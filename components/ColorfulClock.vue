@@ -390,7 +390,7 @@ input[type="color"]::-webkit-color-swatch {
 .progress-clock__time-digit,
 .progress-clock__time-colon,
 .progress-clock__time-ampm {
-  font: 1em/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  font: 0.7em/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   transition: color 0.2s linear;
   -webkit-user-select: none;

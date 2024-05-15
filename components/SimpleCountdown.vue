@@ -2,7 +2,7 @@
  * @Author: cumany cuman@qq.com
  * @Date: 2023-03-05 15:02:39
  * @LastEditors: cumany cuman@qq.com
- * @LastEditTime: 2023-11-02 21:48:24
+ * @LastEditTime: 2023-12-05 15:59:35
  * @FilePath: \pkmer-docs\src\components\Widget\SimpleCountdown\SimpleCountdown.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -26,6 +26,7 @@ interface Props {
 // 从父组件读取配置
 const props = defineProps<Props>();
 const week_ZN = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+const themeColor = ref(""); //basic
 
 const start_p = ref(props.widgetConfig?.["date-picker"]);
 
@@ -86,7 +87,11 @@ watch(start_p, (newValue, oldValue) => {
     .replace("/", "-");
 });
 watchEffect(() => {
-  displayValue.value = props.widgetConfig["input-text"];
+  displayValue.value = props.widgetConfig["input-text"] || "年底";
+
+  themeColor.value = props.widgetConfig["theme-color"]
+    ? props.widgetConfig["theme-color"]
+    : "#7d7d7d";
 
   if (textValue.value) {
     displayValue.value = textValue.value;
@@ -106,7 +111,7 @@ watchEffect(() => {
   }
 
   let times = myDate.getTime() - _now.value;
-  days.value = Math.floor(times / 1000 / 60 / 60 / 24);
+  days.value = Math.floor(times / 1000 / 60 / 60 / 24) + 1;
 
   times = Math.abs(times % (1000 * 24 * 60 * 60));
   hours.value = Math.floor(times / 1000 / 60 / 60);
@@ -145,105 +150,121 @@ onBeforeUnmount(() => {
 });
 </script>
 <template>
-  <div class="sub-container">
-    <div class="wrap">
-      <div class="countdown">
-        <p>
-          <span id="title">
-            <input
-              ref="inputRef"
-              v-if="isEditing"
-              v-model="textValue"
-              @blur="handleBlur"
-            />
+  <div class="countdown-container">
+    <div class="text-wrapper">
+      <span class="title">
+        <span id="title">
+          <input
+            ref="inputRef"
+            v-if="isEditing"
+            v-model="textValue"
+            @blur="handleBlur"
+          />
 
-            <span v-if="!isEditing" @click="handleClick">
-              {{ displayValue }}</span
-            ></span
-          >
-        </p>
-        <div class="days">
-          <span id="days">{{ days }}<span>天</span></span>
-        </div>
-        <p id="down">{{ hours }}小时 {{ minute }}分{{ second }}秒</p>
-        <div v-if="!showPicker" id="date" @click="handleClickDate">
-          {{ dateString }} {{ weekdayString }}
-        </div>
+          <span v-if="!isEditing" @click="handleClick">
+            {{ displayValue }}</span
+          ></span
+        ></span
+      >
+      <span class="status" v-if="days < 0">已过去</span>
+      <span class="status" v-if="days > 0">还有</span>
+      <span class="status" v-if="days == 0"> 就在今日 </span>
+    </div>
+    <div class="timer-wrapper">
+      <span
+        class="timer"
+        v-if="!showPicker"
+        id="date"
+        @click="handleClickDate"
+        >{{ days > 0 ? days : -days }}</span
+      >
+      <span class="timer" v-if="showPicker">
         <input
           ref="inputDateRef"
           type="date"
-          v-if="showPicker"
           id="date-input"
           @blur="handleBlurDate"
           v-model="selectedDate"
-        />
-      </div>
+      /></span>
+      <span class="unit">天</span>
     </div>
   </div>
 </template>
 <style scoped>
-#container .wrap {
-  display: block;
+.countdown-container {
+  --primary-color: #37352f;
+  --primary-color-dark: #ffffffcf;
+  --secondary-color: #37352fb2;
+  --secondary-color-dark: #d4d4d4ab;
+
+  --bg-color: #ffffff;
+  --bg-color-dark: #191919;
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  overflow: hidden;
+  color: v-bind(themeColor);
 }
-.wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  font-size: 18px;
-  background-color: #ffffff00;
-}
-.dark .wrap {
-  width: 100%;
-  background-color: unset;
-}
-p {
-  margin: 0;
- 
-}
-.countdown {
-	color: #747474;
-  text-align: center;
-  font-family: serif;
-}
-.days {
-  color: #747474;
-}
-.countdown span {
-  font-weight: bold;
-  display: inline-block;
-  color: #747474;
-}
-#days {
-  position: relative;
-  font-size: 2.5rem;
-  line-height: 1;
-}
-#days span {
-  font-size: 0.875rem;
-  color: #191919;
-  background: #c9c9c9ab;
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  margin-left: 0.25rem;
+
+.text-wrapper {
   margin-bottom: 0.25rem;
-  bottom: 0;
-  position: absolute;
-  left: 100%;
+  margin-left: 1rem;
+}
+
+.title {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.status {
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.timer-wrapper {
+  position: relative;
+}
+
+.timer {
+  font-size: 3rem;
+  font-weight: 500;
   line-height: 1;
 }
-#down {
+
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  margin-bottom: 0.3rem;
+  margin-left: 0.35rem;
+  display: block;
+  line-height: 1;
+  border-radius: 2px;
+  padding: 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
+
+.unit {
+  color: var(--bg-color-dark);
+  background: var(--secondary-color-dark);
+}
+.countdown-container.dark .unit {
+  color: var(--bg-color);
+  background: var(--secondary-color);
+}
+
 input {
-  width: 70%;
+  width: 75%;
   padding: 6px 10px;
   margin: 8.002px 0;
   border: 1px solid #8b8b8b;
   border-radius: 8.002px;
   font-size: 16px;
   background: transparent;
+  color: #747474;
 }
 </style>
